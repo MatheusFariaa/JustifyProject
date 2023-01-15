@@ -1,3 +1,4 @@
+import { JustifyService } from './../../services/justify.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-}
+  constructor(private justifyService: JustifyService) {}
+
+  ngOnInit(): void {
+    this.verificarTokenUrlCallback();
+  }
+
+  verificarTokenUrlCallback() {
+    const token = this.justifyService.obterTokenUrlCallback();
+    console.log('token')
+  }
+
+    abirPaginaLogin() {
+      window.location.href = this.justifyService.obterUrlLogin();
+    }
+  }
+

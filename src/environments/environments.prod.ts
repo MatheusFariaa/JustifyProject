@@ -3,9 +3,9 @@ export const environments = {
 };
 
 export const JustifyConfiguration = {
-  clientId: 'dbcadd915af64307b96ac48ca499f38f',
+  clientId:'8b695b30d6e64ac79416b6c1f5ec3273',
   authEndpoint:'https://accounts.spotify.com/authorize',
-  redirectUrl:'https://localhost:4200/login/',
+  redirectUrl:'http://localhost:4200/login/',
   scopes: [
     "user-read-currently-playing", // musica tocando agora.
     "user-read-recently-played", // ler musicas tocadas recentemente
