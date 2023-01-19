@@ -1,3 +1,4 @@
+import { AutenticadoGuard } from './guards/autenticado.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { AppRotas } from './app.routes';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(AppRotas)
+    RouterModule.forRoot(AppRotas),
   ],
   providers: [],
   bootstrap: [AppComponent]

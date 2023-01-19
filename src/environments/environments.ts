@@ -3,9 +3,10 @@
   };
 
   export const SpotifyConfiguration = {
-    clientId: '8b695b30d6e64ac79416b6c1f5ec3273',
+    clientId: 'abcc7b46d0d8458b9bf366de2c1919a2',
+    clientSecret: '0811a0093aa74d33a6a94afef5ab2b82',
     authEndpoint: 'https://accounts.spotify.com/authorize',
-    redirectUrl: 'http://localhost:4200/login/',
+    redirectURL: 'http://localhost:4200/login/',
     scopes: [
       "user-read-currently-playing", // musica tocando agora.
       "user-read-recently-played", // ler musicas tocadas recentemente

@@ -16,7 +16,9 @@ export class LoginComponent {
 
   verificarTokenUrlCallback() {
     const token = this.justifyService.obterTokenUrlCallback();
-    console.log('token')
+    if(!!token) {
+      this.justifyService.definirAcessToken(token);
+    }
   }
 
     abirPaginaLogin() {
