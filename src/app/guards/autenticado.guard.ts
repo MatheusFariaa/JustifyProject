@@ -24,21 +24,15 @@ export class AutenticadoGuard implements CanLoad {
         return this.naoAutenticado();
       }
 
-      return new Promise((res) => {
-        const usuarioCriado = this.JustifyService.inicializarUsuario();
+      return new Promise(async(res) => {
+        const usuarioCriado = await this.JustifyService.inicializarUsuario();
         if(usuarioCriado)
           res (true);
 
         else
 
-        res(this.naoAutenticado())
-
+          res(this.naoAutenticado())
         })
-
-
-
-
-    return true;
   }
 
   naoAutenticado() {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { JustifyService } from './../../services/justify.service';
 import { Component } from '@angular/core';
 
@@ -8,7 +9,10 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  constructor(private justifyService: JustifyService) {}
+  constructor(
+    private justifyService: JustifyService,
+    private router: Router) {
+    }
 
   ngOnInit(): void {
     this.verificarTokenUrlCallback();
@@ -18,6 +22,7 @@ export class LoginComponent {
     const token = this.justifyService.obterTokenUrlCallback();
     if(!!token) {
       this.justifyService.definirAcessToken(token);
+      this.router.navigate(['/player']);
     }
   }
 

@@ -1,3 +1,4 @@
+import { PainelEsquerdoComponent } from './../../components/painel-esquerdo/painel-esquerdo.component';
 import { PlayerRotas } from './player.routes';
 import { Router, RouterModule } from '@angular/router';
 import { PlayerComponent } from './player.component';
@@ -8,7 +9,8 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    PlayerComponent
+    PlayerComponent,
+    PainelEsquerdoComponent
   ],
   imports: [
     CommonModule,
