@@ -1,9 +1,10 @@
+import { IPlaylist } from './../interfaces/IPlaylist';
 import { IUsuario } from './../interfaces/IUsuario';
 import { JustifyConfiguration } from './../../environments/environments.prod';
 import { Injectable } from '@angular/core';
 import Spotify from 'spotify-web-api-js'
 import { Token } from '@angular/compiler';
-import { JustifyUserParaUsuario } from '../Common/justifyHelper';
+import { JustifyPlaylistParaPlaylist, JustifyUserParaUsuario } from '../Common/justifyHelper';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,15 @@ import { JustifyUserParaUsuario } from '../Common/justifyHelper';
 export class JustifyService {
 
   JustifyApi: Spotify.SpotifyWebApiJs = null;
-
   usuario: IUsuario;
-
-  userInfo: string;
 
   constructor() {
     this.JustifyApi = new Spotify();
+    this.inicializarUsuario();
    }
 
    async inicializarUsuario() {
-    if(!this.usuario)
+    if(!!this.usuario)
       return true;
 
     const token = localStorage.getItem('token');
@@ -31,21 +30,23 @@ export class JustifyService {
 
       try {
 
-        await this.definirAcessToken(token);
+        console.log('sucess')
+        this.definirAcessToken(token);
         await this.obterJustifyUsuario();
         return !!this.usuario;
+        debugger
 
 
       }catch(ex){
 
         return false;
-
       }
     }
 
     async obterJustifyUsuario() {
-      const userInfo = this.JustifyApi.getMe();
-      this.usuario = JustifyUserParaUsuario(await userInfo);
+      const userInfo = await this.JustifyApi.getMe();
+      this.usuario = JustifyUserParaUsuario(userInfo);
+      console.log(userInfo)
     }
 
    obterUrlLogin() {
@@ -61,7 +62,6 @@ export class JustifyService {
     if (!window.location.hash)
     return '';
 
-    const clienteSecret = `client_secret=${JustifyConfiguration.clienteSecret}&`;
     const params = window.location.hash.substring(1).split('&');
     return params[0].split('=')[1];
   }
@@ -70,6 +70,11 @@ export class JustifyService {
   definirAcessToken(token: string) {
     this.JustifyApi.setAccessToken(token);
     localStorage.setItem('token', token);
-    this.JustifyApi.skipToNext();
+    console.log(token);
+  }
+
+  async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]>{
+    const playlists = await this.JustifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
+    return playlists.items.map(JustifyPlaylistParaPlaylist);
   }
 }
