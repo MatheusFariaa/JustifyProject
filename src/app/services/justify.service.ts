@@ -16,7 +16,6 @@ export class JustifyService {
 
   constructor() {
     this.JustifyApi = new Spotify();
-    this.inicializarUsuario();
    }
 
    async inicializarUsuario() {
@@ -34,7 +33,6 @@ export class JustifyService {
         this.definirAcessToken(token);
         await this.obterJustifyUsuario();
         return !!this.usuario;
-        debugger
 
 
       }catch(ex){

@@ -5,7 +5,7 @@ export function JustifyUserParaUsuario(user: SpotifyApi.CurrentUsersProfileRespo
   return {
     id: user.id,
     nome: user.display_name,
-    imagemUrl: user.images.pop().url
+    imagemUrl: ''
   }
 }
 
@@ -13,6 +13,6 @@ export function JustifyPlaylistParaPlaylist(playlist: SpotifyApi.PlaylistObjectS
   return {
     id: playlist.id,
     nome: playlist.name,
-    imagemUrl: playlist.images.pop().url
+    imagemUrl: ''
   };
 }
