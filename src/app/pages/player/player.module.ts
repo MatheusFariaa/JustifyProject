@@ -1,3 +1,4 @@
+import { RodapeUsuarioComponent } from './../../components/rodape-usuario/rodape-usuario.component';
 import { BotaoMenuComponent } from './../../components/botao-menu/botao-menu.component';
 import { PainelEsquerdoComponent } from './../../components/painel-esquerdo/painel-esquerdo.component';
 import { PlayerRotas } from './player.routes';
@@ -13,7 +14,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     PlayerComponent,
     PainelEsquerdoComponent,
-    BotaoMenuComponent
+    BotaoMenuComponent,
+    RodapeUsuarioComponent
   ],
   imports: [
     CommonModule,

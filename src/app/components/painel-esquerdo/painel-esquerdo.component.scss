@@ -3,6 +3,9 @@
 $h-justify-logo: 120px;
 $h-menu-opcoes: 150px;
 $m-entre-menus:10px;
+$h-footer-user: 70px;
+
+$h-desconsiderar: calc($h-justify-logo + $h-menu-opcoes + $h-footer-user);
 
 :host {
   max-width: 300px;
@@ -56,7 +59,7 @@ $m-entre-menus:10px;
 
     .playlist-scroll {
       width: 100%;
-      max-height: 50vh;
+      max-height: calc(95vh - $h-desconsiderar);
       overflow-y: auto;
 
       &::-webkit-scrollbar {
@@ -67,5 +70,15 @@ $m-entre-menus:10px;
         margin-bottom: $m-entre-menus;
       }
     }
+  }
+
+  .usuario-info {
+    flex-grow: 0;
+    display: block;
+    bottom: 0;
+    align-self: flex-end;
+    height: $h-footer-user;
+    width: 100%;
+    background-color: rebeccapurple
   }
 }
