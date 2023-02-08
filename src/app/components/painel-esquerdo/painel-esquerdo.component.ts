@@ -28,6 +28,7 @@ export class PainelEsquerdoComponent {
 
   botaoClick(botao: string) {
     this.menuSelecionado = botao;
+    this.router.navigateByUrl('player/home')
   }
 
   irParaPlaylist(playlistId: string){

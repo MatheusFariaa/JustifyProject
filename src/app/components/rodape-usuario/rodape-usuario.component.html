@@ -1,6 +1,7 @@
 <div>
-  <img [src]="" alt="" srcset="">
+  <img [src]="usuario.imagemUrl" alt="" srcset="">
   <span>
-    Washington Luis
+    {{usuario.nome}}
   </span>
+  <fa-icon class="icone" [icon]="sairIcone" (click)="logout()"></fa-icon>
 </div>

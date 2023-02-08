@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { IPlaylist } from './../interfaces/IPlaylist';
 import { IUsuario } from './../interfaces/IUsuario';
 import { JustifyConfiguration } from './../../environments/environments.prod';
@@ -14,7 +15,7 @@ export class JustifyService {
   JustifyApi: Spotify.SpotifyWebApiJs = null;
   usuario: IUsuario;
 
-  constructor() {
+  constructor(private router: Router) {
     this.JustifyApi = new Spotify();
    }
 
@@ -74,5 +75,10 @@ export class JustifyService {
   async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]>{
     const playlists = await this.JustifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
     return playlists.items.map(JustifyPlaylistParaPlaylist);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

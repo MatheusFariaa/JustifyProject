@@ -22,7 +22,7 @@ export class LoginComponent {
     const token = this.justifyService.obterTokenUrlCallback();
     if(!!token) {
       this.justifyService.definirAcessToken(token);
-      this.router.navigate(['/player']);
+      this.router.navigate(['/player/home']);
     }
   }
 
