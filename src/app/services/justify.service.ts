@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import Spotify from 'spotify-web-api-js'
 import { Token } from '@angular/compiler';
 import { JustifyPlaylistParaPlaylist, JustifyUserParaUsuario } from '../Common/justifyHelper';
+import { IArtista } from '../interfaces/IArtista';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,10 @@ export class JustifyService {
   async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]>{
     const playlists = await this.JustifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
     return playlists.items.map(JustifyPlaylistParaPlaylist);
+  }
+
+  async buscarTopArtistas(limit=10): Promise<IArtista[]> {
+    return[];
   }
 
   logout() {
